@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Repro
 
 class ViewController: UIViewController {
 
@@ -48,7 +49,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func CalculationBMI(_ sender: AnyObject) {
+        Repro.track("CheckButon", properties: nil)
         bmi = w / (h*h)
+        
+        Repro.setDoubleUserProfile(Double(bmi), forKey:"bmi")
+        
         
         var str = ""
         
